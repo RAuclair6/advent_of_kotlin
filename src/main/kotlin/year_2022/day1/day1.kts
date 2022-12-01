@@ -1,21 +1,13 @@
-package year_2017.day1
+package year_2022.day1
 
 import java.io.File
 
-fun sol(input: String, steps: Int): Int {
-    var ans = 0
-    for ((i, chr) in input.withIndex()) {
-        if (chr == input[(i + steps) % input.length]) {
-            ans += chr.digitToInt()
-        }
-    }
-    return ans
-}
-
 fun main(args: Array<String>) {
-    val inp = File(args[0]).readText()
-    println("pt1: ${sol(inp, 1)}")
-    println("pt2: ${sol(inp, inp.length / 2)}")
+    val inp: List<List<Int>> = File(args[0]).readText()
+        .split("\n\n")
+        .map { elf -> elf.split("\n").map { it.toInt() } }
+    println("pt1: ${inp.maxOfOrNull { it.sum() }}")
+    println("pt2: ${inp.map { it.sum() }.sorted().takeLast(3).sum()}")
 }
 
 main(args)
