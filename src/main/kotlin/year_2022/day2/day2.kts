@@ -46,7 +46,6 @@ fun main(args: Array<String>) {
     val inp: List<List<String>> = File(args[0]).readLines().map {
         it.split(" ")
     }
-//    println("$inp")
     println("pt1: ${inp.sumOf { games[it]!! }}")
     println("pt2: ${inp.sumOf { games[pt2(it)]!! }}")
 }
